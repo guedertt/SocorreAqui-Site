@@ -1,0 +1,389 @@
+/* Importação da Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variáveis e Reset Básico */
+:root {
+    --primary-color: #dc3545; /* Vermelho de emergência */
+    --background-dark: #121212;
+    --text-light: #f0f0f0;
+    --header-bg: rgba(18, 18, 18, 0.95);
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* === HEADER (Cabeçalho Fixo) === */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    /* Grid para centralizar a Nav Bar */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; 
+    
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--header-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-self: start; 
+}
+
+nav {
+    justify-self: center;
+}
+
+.social-icons {
+    justify-self: end;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.logo-icon {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url('image_9e535a.png') no-repeat center center/contain;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out, left 0.3s ease-out;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+    left: 0;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+/* === ANIMAÇÕES PADRÃO === */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in { opacity: 0; } 
+.fade-in-up { opacity: 0; }
+.fade-in-left { opacity: 0; }
+.fade-in-right { opacity: 0; }
+
+.loaded .fade-in { animation: fadeIn 1s ease-out forwards; }
+.loaded .fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+.loaded .fade-in-left { animation: fadeInLeft 1s ease-out forwards; }
+.loaded .fade-in-right { animation: fadeInRight 1s ease-out forwards; }
+
+
+/* === PÁGINA INICIAL (index.html) === */
+.inicio {
+    background: url('image_9e56c1.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.inicio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+@keyframes policeFlash {
+    0%, 100% { box-shadow: 0 0 150px rgba(255, 0, 0, 0.4), 0 0 150px rgba(0, 0, 255, 0.4); }
+    50% { box-shadow: 0 0 120px rgba(255, 0, 0, 0.2), 0 0 120px rgba(0, 0, 255, 0.2); }
+}
+.inicio {
+    animation: policeFlash 4s infinite alternate;
+}
+
+.content-inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    z-index: 10; 
+}
+
+.hero-text h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+
+/* === PÁGINA DOWNLOAD (download.html) === */
+.content-download {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 5% 4rem 5%;
+    align-items: center; 
+    min-height: calc(100vh - 5rem); 
+}
+
+/* Estilos de Texto e CTA */
+.content-download .text-block h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+.content-download .text-block p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+.cta-phrase {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    font-style: italic;
+}
+
+/* Bloco da Imagem */
+.mockup-block {
+    text-align: center;
+    padding: 20px; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.download-container {
+    max-width: 350px; 
+    width: 100%;
+    position: relative; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    overflow: hidden;
+    opacity: 0; 
+}
+
+.mockup-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Links Clicáveis (Overlay) */
+.store-link {
+    display: block;
+    position: absolute;
+    background: transparent; 
+    transition: box-shadow 0.3s;
+    z-index: 5;
+}
+
+.apple-area {
+    width: 38%;
+    height: 5%;
+    bottom: 5.5%; 
+    left: 10%;
+    border-radius: 5px;
+}
+
+.android-area {
+    width: 38%;
+    height: 5%;
+    bottom: 5.5%;
+    right: 10%;
+    border-radius: 5px;
+}
+
+.store-link:hover {
+    box-shadow: 0 0 10px var(--primary-color), 0 0 5px var(--primary-color) inset;
+    opacity: 0.9;
+}
+
+
+/* === PÁGINA SOBRE (sobre.html) - CORREÇÃO FINAL DE ALTURA === */
+.content-sobre {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 5% 4rem 5%;
+    /* Centraliza o texto verticalmente com a imagem */
+    align-items: center; 
+    /* MUDANÇA: Garante que o contêiner ocupe a maior parte da tela */
+    min-height: calc(100vh - 5rem); 
+}
+
+.content-sobre .text-block h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.content-sobre .text-block p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.alarm-icon {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    background: url('image_9e4f3e.png') no-repeat center center/contain;
+}
+
+@keyframes flashRed {
+    0%, 100% { filter: brightness(1.2); opacity: 1; }
+    50% { filter: brightness(0.8); opacity: 0.8; }
+}
+
+.alarm-image {
+    text-align: center;
+    animation: flashRed 1.5s infinite alternate;
+}
+
+/* === Media Queries (Responsividade) === */
+@media (max-width: 768px) {
+    header {
+        grid-template-columns: 1fr;
+        padding: 1rem 5%;
+    }
+    .logo, nav, .social-icons {
+        justify-self: center; 
+        text-align: center;
+    }
+    nav ul {
+        margin-top: 0.5rem;
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+    nav ul li a {
+        padding: 0.5rem 0.8rem;
+    }
+    .social-icons {
+        margin-top: 0.5rem;
+    }
+    
+    /* Layout de coluna para "Sobre" e "Download" em telas pequenas */
+    .content-sobre, .content-download {
+        grid-template-columns: 1fr; 
+        padding-top: 10rem;
+        /* Remove o min-height grande para evitar scroll em telas pequenas */
+        min-height: auto; 
+    }
+    .text-block, .alarm-image, .mockup-block {
+        text-align: center;
+    }
+    
+    .alarm-icon {
+        width: 150px;
+        height: 150px;
+    }
+    .hero-text h2 {
+        font-size: 2.5rem;
+    }
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+    
+    /* Responsividade específica para o Mockup */
+    .download-container {
+        max-width: 300px;
+    }
+    .apple-area, .android-area {
+        height: 6%; 
+        bottom: 5%;
+        width: 40%;
+    }
+}
